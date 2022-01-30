@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="simulation.css">
+<body>
+<button class="button back-button" onclick="goToPreviousPage()">&#8592; back</button>
+<div class="content">
+    <h1 id="simulation-title" class="title">Level 1</h1>
+    <p id="simulation-text" class="text">Level 1</p>
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="canvas-wrapper">
+                <canvas id="canvas-0"></canvas>
+            </div>
+        </div>
+        <div id="grid-item-info" class="grid-item">
+            <div id="robot-grid" class="robot-grid"></div>
+            <div class="screen-wrapper">
+                <div id="output-screen" class="output-screen"></div>
+            </div>
+
+            <div id="button-grid" class="button-grid">
+                <div class="button-grid-item">
+                <button class="button navigation-button" onclick="moveOneStep()">&#187;</button>
+                </div>
+                <div class="button-grid-item">
+                <button id="auto-move-button" class="button navigation-button" onclick="autoMove()">auto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="continue-button-box">
+        <button id="repeat-button" class="button continue-button" onclick="repeatLevel()">repeat</button>
+        <button id="try-button" class="button continue-button" onclick="tryMore()">try more</button>
+        <button id="next-button" class="button continue-button" onclick="nextLevel()">next level</button>
+    </div>
+</div>
+
+<div id="robot-modal" class="modal">
+    <span id="close-robot-modal" class="close">&#10006;</span>
+    <div class="robot-modal-content">
+
+        <p id="modalTitle" class="modal-title"></p>
+
+        <div id="modal-table" class="modal-table">
+            <div id="modal-table-item-left" class="modal-table-item-left">
+                <img id="modal-robot-img" class="robot-img-lg">
+            </div>
+            <div class="modal-table-item-right">
+                <div class="robot-extra-information">
+                    <div class="text extra-information-title"><b>Description:</b></div>
+                    <div id="extra-information-text" class="extra-information-text"></div>
+                </div>
+                <div class="robot-algorithm">
+                    <div class="text"><b>Algorithm:</b></div>
+                    <div id="algorithm-text" class="algorithm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popup-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-popup-modal" class="close">&#10006;</span>
+        <p id="popup-modal-title" class="modal-title">PopUp</p>
+        <p class="popup-modal-text"> is it 1 2 3 4?</p>
+        <div class="popup-button-box">
+            <button class="button popup-button 1" onclick="enterAnswer(1)">1</button>
+            <button class="button popup-button 2" onclick="enterAnswer(2)">2</button>
+            <button class="button popup-button 3" onclick="enterAnswer(3)">3</button>
+            <button class="button popup-button 4" onclick="enterAnswer(4)">4</button>
+        </div>
+    </div>
+</div>
+<script src="../general/language-EN.js" type="text/javascript"></script>
+<script src="../general/maps.js" type="text/javascript"></script>
+<script src="./simulation.js" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="start.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Route Planner</title>
+</head>
+<body>
+    <div class="content">
+        <h1 id="game-title" class="title"></h1>
+        <h2 id="game-title2" class="game-title2"></h2>
+        <div id="grid-container" class="grid-container">
+            <div class="button-div">
+                <button id="create-game-button" class="grid-item button add-button" onclick="showNewGameModal()">
+                    &#43;
+                </button>
+            </div>
+        </div>
+        <button id="continue-button" class="button continue-button" onclick="continueGame()"></button>
+    </div>
+    <div id="confirm-modal" class="confirm-modal">
+        <div id="confirm-modal-content" class="confirm-modal-content">
+            <div class="delete-warning">
+                &#10006;
+                <div class="delete-warning-circle">&#9711;</div>
+            </div>
+            <h1 id="confirm-modal-question" class="confirm-modal-text"></h1>
+            <p id="confirm-modal-text" class="text"></p>
+            <div class="confirm-buttons">
+                <button id="button-cancel" class="button cancel" onclick="closeConfirmModal()"></button>
+                <button id="button-delete" class="button delete" onclick="deleteGame()"></button>
+            </div>
+        </div>
+    </div>
+    <div id="dialog-modal" class="dialog-modal">
+        <div id="dialog-modal-content" class="dialog-modal-content">
+            <h1 id="dialog-modal-text" class="dialog-modal-text"></h1>
+            <label for="game-name"></label>
+            <input class="input" type="text" id="game-name" maxlength="12"/>
+            <div class="create-buttons">
+                <button id="button-cancel-newGame" class="button cancel" onclick="closeDialogModal()"></button>
+                <button id="button-create" class="button create" onclick="createNewGame()"></button>
+            </div>
+        </div>
+    </div>
+    <script src="../general/language-EN.js" type="text/javascript"></script>
+    <script src="./start.js" type="text/javascript"></script>
+</body>
+</html>
+
+
+
+

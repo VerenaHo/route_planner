@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="level.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Route Planner</title>
+</head>
+<body>
+    <button class="button back-button" onclick="goToPreviousPage()">&#8592; back</button>
+    <div class="content">
+        <h1 id="game-title" class="title">Route Planner</h1>
+
+        <div id="grid-container" class="grid-container">
+            <div id="level-grid" class="level-container">
+            </div>
+            <button id="continue-button" class="button continue-button" onclick="continueStory()">Continue Story</button>
+            <button id="man-button" class="button man-button" onclick="manualModus()">Try yourself</button>
+        </div>
+
+    </div>
+    <div id="confirm-modal" class="modal">
+        <div id="confirm-modal-content" class="confirm-modal-content">
+            <div id="modal-table" class="modal-table">
+                <div id="modal-table-item-left" class="modal-table-item-left">
+                    <h1 id="confirm-modal-titel" class="confirm-modal-text"></h1>
+                    <p id="confirm-modal-text" class="text"></p>
+                    <div class="confirm-buttons">
+                        <button class="button cancel" onclick="closeConfirmModal()">cancel</button>
+                        <button class="button start" onclick="startNextPage()">start</button>
+                    </div>
+                </div>
+                <div class="modal-table-item-right">
+                    <img id="modal-robot-img" class="robot-img-lg" >
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="../general/language-EN.js" type="text/javascript"></script>
+<script src="level.js" type="text/javascript"></script>
+</body>
+</html>
+
+
+
+
