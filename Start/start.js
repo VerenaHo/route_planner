@@ -1,5 +1,10 @@
-//later
-//TODO code clean up css html js
+//TODO language de file
+
+//TODO no game names twice
+
+//TODO code clean up html
+//TODO code clean up css
+//TODO code clean up js
 
 const gameGrid = document.getElementById("grid-container"),
     continueButton = document.getElementById("continue-button");
@@ -124,7 +129,7 @@ function createNewGame() {
 
     let game = {id: gameId, gameTitle: gameName.value, progress: 0, map: null , robots: null};
     localStorage.setItem("game-" + gameId, JSON.stringify(game));
-    document.location.href = "../Level/level.html?game="+gameId+"&storyMode=1";
+    document.location.href = "../Selection/selection.html?game="+gameId;
 }
 
 gameGrid.addEventListener('click', (event) => {
@@ -244,7 +249,7 @@ function deleteGame() {
 function continueGame() {
     // get game data
     let sGame = games[getIndexOf(selectedGame)];
-    document.location.href = "../Level/level.html?game="+sGame.id+"&storyMode=1";
+    document.location.href = "../Selection/selection.html?game="+sGame.id;
 }
 
 function getIndexOf(id) {

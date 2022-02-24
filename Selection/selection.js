@@ -1,8 +1,16 @@
-//now
 //TODO fix create map funktion (reset)
+//TODO fix load save map
 //TODO check texts
-//TODO create your own robot
+//TODO no map names twice
+//TODO language de file
+//TODO create kleine karte
+//TODO create mittlere karte
+//TODO create große karte
+//TODO load maps at right time
 
+//TODO code clean up html
+//TODO code clean up css
+//TODO code clean up js
 
 document.getElementById("modal-table-item-left");
 const robotModal = document.getElementById("robot-modal"),
@@ -46,88 +54,25 @@ function init() {
 
     const gameId = JSON.parse(urlParams.get("game"));
     game =JSON.parse(localStorage.getItem("game-" + gameId));
-    level = JSON.parse(urlParams.get("level"));
-    const storyMode = JSON.parse(urlParams.get("storyMode"));
-
-    if(storyMode===1){
-        startStoryModus();
-    }else{
-        createRobotItems();
-        // load default maps
-        loadDefaultMaps();
-
-        if(game.progress==7){
-            createAddBtn();
-            // load maps from local storage
-            loadSavedCustomMaps();
-        }
+    if((game.progress)==5){
+        document.getElementById("next-button").style.display = "none";;
     }
-}
+    createRobotItems();
+    // load default maps
+    loadDefaultMaps();
 
-//TODO maps for each level with fix start finish point - map send via id not with url
-function startStoryModus(){
-    let sMap = defaultMaps[1];
-    let robot = 1;
+    createAddBtn();
+    // load maps from local storage
+    loadSavedCustomMaps();
 
-    let tempRandomStart= Math.floor(Math.random() * (sMap.mapPoints.length-1));
-    let tempRandomEnd = Math.floor(Math.random() * (sMap.mapPoints.length-1));
-    while(tempRandomStart == tempRandomEnd){
-        tempRandomEnd = Math.floor(Math.random() * (sMap.mapPoints.length-1));
-    }
-
-
-    switch (level) {
-        case 1:
-            sMap = defaultMaps[0];
-            robot = 1;
-            break;
-        case 2:
-            sMap = defaultMaps[0];
-            robot = 2;
-            break;
-        case 3:
-            sMap = defaultMaps[0];
-            robot = 3;
-            break;
-        case 4:
-            sMap = defaultMaps[0];
-            robot = 4;
-            break;
-        case 5:
-            sMap = defaultMaps[0];
-            robot = 5;
-            break;
-        case 6:
-            sMap = defaultMaps[0];
-            robot = 6;
-            break;
-        case 7:
-            sMap = defaultMaps[0];
-            robot = 7;
-            break;
-    }
-
-    let tempPoints = sMap.mapPoints;
-    let points = encodeURIComponent(JSON.stringify(tempPoints));
-    let tempEdges = sMap.mapEdges;
-    let edges = encodeURIComponent(JSON.stringify(tempEdges));
-
-    let url = "../Simulation/simulation.html?game="+game.id+"&level="+level+"&storyMode=1&points=" + points + "&edges=" + edges + "&robots="+ robot;
-
-    url += "&start=A";
-    url += "&finish=G";
-
-    document.location.href = url;
 }
 
 /**
  * creates all selectable robot items
  */
 function createRobotItems() {
-
     // create all 7 robot items
-    for (let i = 1; i <= level; i++) {
-
+    for (let i = 1; i <= game.progress+1; i++) {
         // robot item
         let newRobotItem = document.createElement("div");
         newRobotItem.setAttribute("id", "robot-item-" + i);
@@ -178,8 +123,8 @@ function createRobotItems() {
 }
 
 function loadDefaultMaps() {
-    //
-    for(let i = 0; i < level; i++) {
+    //TODO add maps + load relevent ones
+    for(let i = 0; i < 2; i++) {
         createMapItem(idCounter, defaultMaps[i].mapPoints, defaultMaps[i].mapEdges, defaultMaps[i].title,true);
         idCounter++;
     }
@@ -637,7 +582,18 @@ function getIndexOf(id) {
 }
 
 function goToPreviousPage() {
-    window.history.back();
-}
+    if(game.progress==0){
+        document.location.href = "../Start/start.html";
+    }else{
+        let tempGame = {id: game.id, gameTitle: game.gameTitle, progress: (game.progress-1), map: game.map , robots: game.robots};
+        localStorage.setItem("game-" + game.id, JSON.stringify(tempGame));
+        location.reload();
+    }
 
+}
+function goToNextPage() {
+    let tempGame = {id: game.id, gameTitle: game.gameTitle, progress: (game.progress+1), map: game.map , robots: game.robots};
+    localStorage.setItem("game-" + game.id, JSON.stringify(tempGame));
+    location.reload();
+}
 init();

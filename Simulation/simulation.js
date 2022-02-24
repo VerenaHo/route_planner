@@ -1,6 +1,17 @@
-// TODO beautify level desc on top
+// TODO remove level heading add some text e.g. robot and map name
+// TODO fix buttons (repeat / select start  / select end)
 // TODO output log
-// TODO pop up questions (beginning middle end)
+//TODO adjust simulation only what robot sees more animated
+// TODO handle dead end algo
+
+// TODO fix dijkstra
+// TODO pop up questions
+//TODO language de file
+// TODO check multi robot execution
+
+//TODO code clean up html
+//TODO code clean up css
+//TODO code clean up js
 
 let ctx = null,
     canvasSize = null,

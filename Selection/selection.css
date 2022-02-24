@@ -249,7 +249,12 @@ body {
     left: 20px;
     top: 20px;
 }
-
+.next-button {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
 /*------------------------------------------------*/
 /*                   MODAL                        */
 /*------------------------------------------------*/
